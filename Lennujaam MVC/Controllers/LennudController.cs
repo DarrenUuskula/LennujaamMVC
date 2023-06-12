@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Lennujaam_MVC.Data;
 using Lennujaam_MVC.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lennujaam_MVC.Controllers
 {
@@ -102,12 +103,13 @@ namespace Lennujaam_MVC.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
-		public IActionResult LisaLend()
+        [Authorize]
+        public IActionResult LisaLend()
 		{
 			return View();
 		}
 
-		[HttpPost]
+		[HttpPost, Authorize]
 		public async Task<IActionResult> LisaLend([Bind("ID,KohtadeArv,Otspunkt,Sihtpunkt,ValjumisAeg")] Lend lend)
 		{
 			if (ModelState.IsValid)
@@ -119,21 +121,24 @@ namespace Lennujaam_MVC.Controllers
 			return View(lend);
 		}
 
-		public async Task<IActionResult> Index()
+        [Authorize]
+        public async Task<IActionResult> Index()
 		{
 			return _context.Lennud != null ?
 			View(await _context.Lennud.ToListAsync()) :
 			Problem("Entity set 'ApplicationDbContext.Lennud'  is null.");
 		}
 
-		public async Task<IActionResult> LisaReisijaid()
+        [Authorize]
+        public async Task<IActionResult> LisaReisijaid()
 		{
 			return _context.Lennud != null ?
 			View(await _context.Lennud.Where(lend => lend.ReisijateArv < lend.KohtadeArv && !lend.Lopetatud).ToListAsync()) :
 			Problem("Entity set 'ApplicationDbContext.Lennud'  is null.");
 		}
 
-		public async Task<IActionResult> LisaReisija(int id)
+        [Authorize]
+        public async Task<IActionResult> LisaReisija(int id)
 		{
 			if (_context.Lennud == null)
 			{
@@ -149,14 +154,16 @@ namespace Lennujaam_MVC.Controllers
 			return RedirectToAction(nameof(LisaReisijaid));
 		}
 
-		public async Task<IActionResult> Lopetamata()
+        [Authorize]
+        public async Task<IActionResult> Lopetamata()
 		{
 			return _context.Lennud != null ?
 			View(await _context.Lennud.Where(lend => !lend.Lopetatud).ToListAsync()) :
 			Problem("Entity set 'ApplicationDbContext.Lennud'  is null.");
 		}
 
-		public async Task<IActionResult> Lopeta(int id)
+        [Authorize]
+        public async Task<IActionResult> Lopeta(int id)
 		{
 			if (_context.Lennud == null)
 			{
@@ -172,14 +179,15 @@ namespace Lennujaam_MVC.Controllers
 			return RedirectToAction(nameof(Lopetamata));
 		}
 
-		public async Task<IActionResult> Kestvuseta()
+        [Authorize]
+        public async Task<IActionResult> Kestvuseta()
 		{
 			return _context.Lennud != null ?
 			View(await _context.Lennud.Where(lend => lend.Kestvus == TimeSpan.Zero && lend.Lopetatud).ToListAsync()) :
 			Problem("Entity set 'ApplicationDbContext.Lennud'  is null.");
 		}
 
-		[HttpPost]
+        [HttpPost, Authorize]
 		public async Task<IActionResult> LisaKestvus(int id, int days, int hours, int minutes)
 		{
 			if (_context.Lennud == null)
@@ -196,6 +204,7 @@ namespace Lennujaam_MVC.Controllers
 			return RedirectToAction(nameof(Kestvuseta));
 		}
 
+		[Authorize]
 		public async Task<IActionResult> Lopetatud()
 		{
 			return _context.Lennud != null ?

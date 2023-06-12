@@ -1,8 +1,11 @@
-﻿namespace Lennujaam_MVC.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Lennujaam_MVC.Models
 {
     public class Lend
     {
         public int ID { get; set; }
+        [Range(1, 853)]
         public int KohtadeArv { get; set; }
         public int ReisijateArv { get; set; }
         public string Otspunkt { get; set; }

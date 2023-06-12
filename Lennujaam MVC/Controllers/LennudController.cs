@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lennujaam_MVC.Data;
 using Lennujaam_MVC.Models;
@@ -25,24 +20,6 @@ namespace Lennujaam_MVC.Controllers
             return _context.Lennud != null ?
                         View(await _context.Lennud.ToListAsync()) :
                         Problem("Entity set 'ApplicationDbContext.Lennud'  is null.");
-        }
-
-        // GET: Lennud/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Lennud == null)
-            {
-                return NotFound();
-            }
-
-            var lend = await _context.Lennud
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (lend == null)
-            {
-                return NotFound();
-            }
-
-            return View(lend);
         }
 
         // GET: Lennud/Create

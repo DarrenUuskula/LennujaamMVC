@@ -12,6 +12,11 @@
         <form asp-action="LisaLend">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="LennuNR" class="control-label"></label>
+                <input asp-for="LennuNR" class="form-control" />
+                <span asp-validation-for="LennuNR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="KohtadeArv" class="control-label"></label>
                 <input asp-for="KohtadeArv" class="form-control" />
                 <span asp-validation-for="KohtadeArv" class="text-danger"></span>

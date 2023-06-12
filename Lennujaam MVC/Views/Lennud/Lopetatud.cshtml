@@ -10,6 +10,9 @@
 	<thead>
 		<tr>
 			<th>
+				@Html.DisplayNameFor(model => model.LennuNR)
+			</th>
+			<th>
 				@Html.DisplayNameFor(model => model.KohtadeArv)
 			</th>
 			<th>
@@ -36,6 +39,9 @@
 		@foreach (var item in Model)
 		{
 					<tr>
+					<td>
+					@Html.DisplayFor(modelItem => item.LennuNR)
+					</td>
 					<td>
 					@Html.DisplayFor(modelItem => item.KohtadeArv)
 					</td>

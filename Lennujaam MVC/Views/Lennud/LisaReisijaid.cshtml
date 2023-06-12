@@ -10,6 +10,9 @@
 	<thead>
 		<tr>
 			<th>
+				@Html.DisplayNameFor(model => model.LennuNR)
+			</th>
+			<th>
 				@Html.DisplayNameFor(model => model.KohtadeArv)
 			</th>
 			<th>
@@ -38,6 +41,9 @@
 		{
 					<tr>
 					<td>
+					@Html.DisplayFor(modelItem => item.LennuNR)
+					</td>
+					<td>
 					@Html.DisplayFor(modelItem => item.KohtadeArv)
 					</td>
 					<td>
@@ -59,7 +65,10 @@
 					@Html.DisplayFor(modelItem => item.Kestvus)
 					</td>
 					<td>
-						<a class="btn btn-primary" asp-action="LisaReisija" asp-route-id="@item.ID">Lisa Reisija</a>
+					@if (item.ReisijateArv < item.KohtadeArv)
+					{
+						<a class="btn btn-primary" asp-action="LisaReisija" asp-route-id="@item.ID">Lisa Reisija</a>	
+					}
 					</td>
 				</tr>
 		}

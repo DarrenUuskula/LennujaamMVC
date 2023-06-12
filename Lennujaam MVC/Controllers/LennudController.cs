@@ -36,7 +36,7 @@ namespace Lennujaam_MVC.Controllers
 		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, [Bind("ID,KohtadeArv,ReisijateArv,Otspunkt,Sihtpunkt,ValjumisAeg,Lopetatud")] Lend lend)
+		public async Task<IActionResult> Edit(int id, [Bind("ID,LennuNR,KohtadeArv,ReisijateArv,Otspunkt,Sihtpunkt,ValjumisAeg,Lopetatud")] Lend lend)
 		{
 			if (id != lend.ID)
 			{
@@ -110,7 +110,7 @@ namespace Lennujaam_MVC.Controllers
 		}
 
 		[HttpPost, Authorize]
-		public async Task<IActionResult> LisaLend([Bind("ID,KohtadeArv,Otspunkt,Sihtpunkt,ValjumisAeg")] Lend lend)
+		public async Task<IActionResult> LisaLend([Bind("ID,LennuNR,KohtadeArv,Otspunkt,Sihtpunkt,ValjumisAeg")] Lend lend)
 		{
 			if (ModelState.IsValid)
 			{

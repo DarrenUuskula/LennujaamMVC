@@ -1,0 +1,63 @@
+﻿@model Lennujaam_MVC.Models.Lend
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Lend</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KohtadeArv" class="control-label"></label>
+                <input asp-for="KohtadeArv" class="form-control" />
+                <span asp-validation-for="KohtadeArv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReisijateArv" class="control-label"></label>
+                <input asp-for="ReisijateArv" class="form-control" />
+                <span asp-validation-for="ReisijateArv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otspunkt" class="control-label"></label>
+                <input asp-for="Otspunkt" class="form-control" />
+                <span asp-validation-for="Otspunkt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sihtpunkt" class="control-label"></label>
+                <input asp-for="Sihtpunkt" class="form-control" />
+                <span asp-validation-for="Sihtpunkt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValjumisAeg" class="control-label"></label>
+                <input asp-for="ValjumisAeg" class="form-control" />
+                <span asp-validation-for="ValjumisAeg" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Lopetatud" /> @Html.DisplayNameFor(model => model.Lopetatud)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kestvus" class="control-label"></label>
+                <input asp-for="Kestvus" class="form-control" />
+                <span asp-validation-for="Kestvus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

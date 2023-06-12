@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Lennujaam_MVC.Models.Lend>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KohtadeArv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReisijateArv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Otspunkt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sihtpunkt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValjumisAeg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lopetatud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kestvus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KohtadeArv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReisijateArv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Otspunkt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sihtpunkt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValjumisAeg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lopetatud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kestvus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
